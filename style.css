@@ -26,7 +26,7 @@ body{
         linear-gradient(180deg,#f7fcff 0%,#eef7ff 45%,#f8fbff 100%);
 }
 
-/* ================= NAV ================= */
+/* NAV */
 a{text-decoration:none;color:inherit}
 .container{width:min(1240px,92%);margin:auto}
 
@@ -76,7 +76,7 @@ nav{
     color:#fff;
 }
 
-/* ================= BUTTON ================= */
+/* BUTTON */
 .btn,button{
     border:0;
     cursor:pointer;
@@ -93,7 +93,7 @@ nav{
     border:1px solid var(--line)!important;
 }
 
-/* ================= HERO ================= */
+/* HERO */
 .hero{
     padding:70px 0;
     display:grid;
@@ -101,26 +101,75 @@ nav{
     gap:30px;
 }
 
+/* 🔥 PREMIUM HERO PANEL */
 .hero-panel{
-    min-height:450px;
-    border-radius:30px;
+    min-height:480px;
+    border-radius:34px;
     position:relative;
     overflow:hidden;
+    padding:18px;
+
+    background:rgba(255,255,255,0.65);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,0.4);
+
+    box-shadow:0 25px 60px rgba(0,0,0,0.08);
 }
 
-/* ✅ FIXED REAL IMAGE */
+/* 🔥 HERO IMAGE */
 .hero-photo{
     position:absolute;
-    inset:0;
-    border-radius:30px;
+    inset:16px;
+    border-radius:26px;
+
     background:
-        linear-gradient(rgba(9,24,47,.6),rgba(29,117,255,.4)),
-        url('https://images.unsplash.com/photo-1599058917765-a780eda07a3e')
+        linear-gradient(
+            135deg,
+            rgba(9,24,47,.92),
+            rgba(29,117,255,.65)
+        ),
+        url('https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=1200&q=80')
         center/cover no-repeat;
+
+    box-shadow:inset 0 0 40px rgba(0,0,0,0.25);
 }
 
-/* ================= EXERCISE ================= */
+/* 🔥 TEXT STRIP */
+.hero-photo::after{
+    content:"Correct postures. Clear coaching. Safer reps.";
+    position:absolute;
+    left:18px;
+    right:18px;
+    bottom:18px;
 
+    background:rgba(255,255,255,0.95);
+    padding:14px 16px;
+    border-radius:16px;
+
+    font-weight:800;
+    font-size:14px;
+    color:#0b1f3a;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* FLOAT BADGES */
+.float{
+    position:absolute;
+    padding:10px 14px;
+    border-radius:14px;
+    background:#fff;
+    font-size:13px;
+    font-weight:800;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.f1{ top:70px; left:10px; }
+.f2{ top:120px; right:12px; }
+.f3{ bottom:85px; left:20px; }
+.f4{ bottom:60px; right:25px; }
+
+/* EXERCISE */
 .exercise-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -139,25 +188,16 @@ nav{
     transform:translateY(-6px);
 }
 
-/* ✅ SINGLE SOURCE OF TRUTH */
 .exercise-img{
     width:100%;
     height:240px;
     object-fit:cover;
-    display:block;
-    transition:0.3s;
-}
-
-.exercise-img:hover{
-    transform:scale(1.04);
 }
 
 .media-wrap{
     position:relative;
-    overflow:hidden;
 }
 
-/* ✅ FIXED duplicate */
 .media-badge{
     position:absolute;
     top:12px;
@@ -170,8 +210,7 @@ nav{
     font-weight:700;
 }
 
-/* ================= CONTENT ================= */
-
+/* CONTENT */
 .exercise-info{
     padding:16px;
 }
@@ -197,8 +236,7 @@ nav{
     color:var(--muted);
 }
 
-/* ================= FORMS ================= */
-
+/* FORM */
 input,textarea{
     width:100%;
     padding:12px;
@@ -206,17 +244,18 @@ input,textarea{
     border:1px solid var(--line);
 }
 
-/* ================= FOOTER ================= */
-
+/* FOOTER */
 footer{
     text-align:center;
     padding:30px;
     color:var(--muted);
 }
 
-/* ================= RESPONSIVE ================= */
-
+/* RESPONSIVE */
 @media(max-width:1000px){
+    .hero{
+        grid-template-columns:1fr;
+    }
     .exercise-grid{
         grid-template-columns:repeat(2,1fr);
     }
