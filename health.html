@@ -1,1 +1,258 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Health Tools | HealthForge Fitness</title><link rel="stylesheet" href="style.css"></head><body><div class="topbar"><div class="container"><span><b>HealthForge Fitness</b> • Expert exercise library, posture-first coaching and health articles</span><span>Ready for static hosting</span></div></div><header><div class="container"><nav><a class="logo" href="index.html"><span class="mark">HF</span><span>HealthForge Fitness</span></a><div class="navlinks"><a class="" href="index.html">Home</a><a class="" href="chest.html">Chest</a><a class="" href="shoulders.html">Shoulders</a><a class="" href="back.html">Back</a><a class="" href="arms.html">Arms</a><a class="" href="legs.html">Legs</a><a class="" href="core.html">Core</a><a class="active" href="health.html">Health</a><a class="" href="admin.html">Admin</a></div><a class="btn secondary" href="admin.html">Admin</a></nav></div></header><main><section><div class="container"><div class="section-head"><div><p class="eyebrow">Health Tools</p><h2>Daily fitness calculators</h2><p class="muted">Simple tools for BMI, calories, hydration and workout split planning. These are estimates, not medical advice.</p></div></div><div class="page-grid"><div class="health-card"><h3>⚖️ BMI Calculator</h3><label>Weight KG</label><input id="weight" type="number"><label>Height CM</label><input id="height" type="number"><button onclick="calcBMI()">Calculate</button><div class="result" id="bmiResult">BMI result will appear here.</div></div><div class="health-card"><h3>🔥 Daily Calorie Estimate</h3><label>Weight KG</label><input id="calWeight" type="number"><label>Goal</label><select id="goal"><option>Fat Loss</option><option>Maintain</option><option>Muscle Gain</option></select><button onclick="calcCalories()">Estimate</button><div class="result" id="calResult">Calorie estimate will appear here.</div></div><div class="health-card"><h3>💧 Water Target</h3><label>Weight KG</label><input id="waterWeight" type="number"><button onclick="calcWater()">Calculate</button><div class="result" id="waterResult">Water target will appear here.</div></div><div class="health-card"><h3>🗓️ Weekly Split</h3><label>Training level</label><select id="level"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select><button onclick="makeSplit()">Generate</button><div class="result" id="splitResult">Workout split will appear here.</div></div><div class="health-card"><h3>🧘 Recovery Score</h3><label>Sleep Hours</label><input id="sleep" type="number"><label>Soreness 1-10</label><input id="sore" type="number"><button onclick="recoveryScore()">Check</button><div class="result" id="recoveryResult">Recovery guidance will appear here.</div></div><div class="health-card"><h3>🥗 Protein Target</h3><label>Weight KG</label><input id="proteinWeight" type="number"><button onclick="proteinTarget()">Calculate</button><div class="result" id="proteinResult">Protein target will appear here.</div></div></div></div></section><section><div class="container"><div class="section-head"><div><p class="eyebrow">Health Feed</p><h2>Daily wellness posts</h2></div></div><div id="blogGrid" class="blog-grid"></div></div></section></main><footer><div class="container">HealthForge Fitness • Health Tools</div></footer><script src="site.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Tools | HealthForge Fitness</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="topbar">
+<div class="container">
+<span><b>HealthForge Fitness</b> • Smart Health Dashboard</span>
+<span>Track • Improve • Perform</span>
+</div>
+</div>
+
+<header>
+<div class="container">
+<nav>
+<a class="logo" href="index.html">
+<span class="mark">HF</span>
+<span>HealthForge Fitness</span>
+</a>
+
+<div class="navlinks">
+<a href="index.html">Home</a>
+<a href="chest.html">Chest</a>
+<a href="shoulders.html">Shoulders</a>
+<a href="back.html">Back</a>
+<a href="arms.html">Arms</a>
+<a href="legs.html">Legs</a>
+<a href="core.html">Core</a>
+<a class="active" href="health.html">Health</a>
+<a href="admin.html">Admin</a>
+</div>
+
+<a class="btn secondary" href="admin.html">Admin</a>
+</nav>
+</div>
+</header>
+
+<main>
+
+<section>
+<div class="container">
+
+<div class="section-head">
+<div>
+<p class="eyebrow">Health Tools</p>
+<h2>Smart Fitness Calculators</h2>
+<p class="muted">Accurate estimates to guide your fitness journey.</p>
+</div>
+</div>
+
+<div class="page-grid">
+
+<!-- BMI -->
+<div class="health-card">
+<h3>⚖️ BMI Calculator</h3>
+
+<label>Weight (KG)</label>
+<input id="weight" type="number" placeholder="e.g. 70">
+
+<label>Height (CM)</label>
+<input id="height" type="number" placeholder="e.g. 175">
+
+<button onclick="calcBMI()">Calculate</button>
+<div class="result" id="bmiResult"></div>
+</div>
+
+<!-- Calories -->
+<div class="health-card">
+<h3>🔥 Daily Calories</h3>
+
+<label>Weight (KG)</label>
+<input id="calWeight" type="number">
+
+<label>Goal</label>
+<select id="goal">
+<option>Fat Loss</option>
+<option>Maintain</option>
+<option>Muscle Gain</option>
+</select>
+
+<button onclick="calcCalories()">Estimate</button>
+<div class="result" id="calResult"></div>
+</div>
+
+<!-- Water -->
+<div class="health-card">
+<h3>💧 Water Intake</h3>
+
+<label>Weight (KG)</label>
+<input id="waterWeight" type="number">
+
+<button onclick="calcWater()">Calculate</button>
+<div class="result" id="waterResult"></div>
+</div>
+
+<!-- Split -->
+<div class="health-card">
+<h3>🗓️ Workout Split</h3>
+
+<label>Level</label>
+<select id="level">
+<option>Beginner</option>
+<option>Intermediate</option>
+<option>Advanced</option>
+</select>
+
+<button onclick="makeSplit()">Generate</button>
+<div class="result" id="splitResult"></div>
+</div>
+
+<!-- Recovery -->
+<div class="health-card">
+<h3>🧘 Recovery Score</h3>
+
+<label>Sleep (Hours)</label>
+<input id="sleep" type="number">
+
+<label>Soreness (1–10)</label>
+<input id="sore" type="number">
+
+<button onclick="recoveryScore()">Check</button>
+<div class="result" id="recoveryResult"></div>
+</div>
+
+<!-- Protein -->
+<div class="health-card">
+<h3>🥗 Protein Target</h3>
+
+<label>Weight (KG)</label>
+<input id="proteinWeight" type="number">
+
+<button onclick="proteinTarget()">Calculate</button>
+<div class="result" id="proteinResult"></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- BLOG -->
+<section>
+<div class="container">
+
+<div class="section-head">
+<div>
+<p class="eyebrow">Health Feed</p>
+<h2>Daily Wellness Insights</h2>
+</div>
+</div>
+
+<div id="blogGrid" class="blog-grid"></div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container">
+HealthForge Fitness • Smart Health Tools
+</div>
+</footer>
+
+<script src="site.js"></script>
+
+<script>
+/* ================= BMI ================= */
+function calcBMI() {
+    let w = weight.value;
+    let h = height.value / 100;
+
+    if (!w || !h) return bmiResult.innerText = "Enter valid values";
+
+    let bmi = (w / (h * h)).toFixed(1);
+
+    let status = bmi < 18.5 ? "Underweight"
+        : bmi < 25 ? "Normal"
+        : bmi < 30 ? "Overweight"
+        : "Obese";
+
+    bmiResult.innerText = `BMI: ${bmi} (${status})`;
+}
+
+/* ================= CALORIES ================= */
+function calcCalories() {
+    let w = calWeight.value;
+    let g = goal.value;
+
+    if (!w) return calResult.innerText = "Enter weight";
+
+    let base = w * 30;
+
+    if (g === "Fat Loss") base -= 400;
+    if (g === "Muscle Gain") base += 400;
+
+    calResult.innerText = `${Math.round(base)} kcal/day`;
+}
+
+/* ================= WATER ================= */
+function calcWater() {
+    let w = waterWeight.value;
+
+    if (!w) return waterResult.innerText = "Enter weight";
+
+    let water = (w * 0.035).toFixed(2);
+
+    waterResult.innerText = `${water} Liters/day`;
+}
+
+/* ================= SPLIT ================= */
+function makeSplit() {
+    let level = document.getElementById("level").value;
+
+    let split = {
+        Beginner: "3 Days: Full Body",
+        Intermediate: "5 Days: Push/Pull/Legs",
+        Advanced: "6 Days: Bro Split"
+    };
+
+    splitResult.innerText = split[level];
+}
+
+/* ================= RECOVERY ================= */
+function recoveryScore() {
+    let sleep = document.getElementById("sleep").value;
+    let sore = document.getElementById("sore").value;
+
+    if (!sleep || !sore) return recoveryResult.innerText = "Enter values";
+
+    let score = (sleep * 10) - (sore * 5);
+
+    let msg = score > 60 ? "Fully Recovered ✅"
+        : score > 30 ? "Moderate Recovery ⚠️"
+        : "Rest Required ❌";
+
+    recoveryResult.innerText = msg;
+}
+
+/* ================= PROTEIN ================= */
+function proteinTarget() {
+    let w = proteinWeight.value;
+
+    if (!w) return proteinResult.innerText = "Enter weight";
+
+    let protein = (w * 1.8).toFixed(1);
+
+    proteinResult.innerText = `${protein} grams/day`;
+}
+</script>
+
+</body>
+</html>
